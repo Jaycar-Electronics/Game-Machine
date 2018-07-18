@@ -42,7 +42,7 @@ There's a bit of soldering and fiddly wiring involved, but we were playing games
 
 
 ### Connection Diagram
-![](../resources/images/game-machine.png)
+![](../resourcimages/game-machine.png)
 
 ## Downloads
 * [Source code](../resources/downloads/game-machine.zip)
@@ -73,49 +73,49 @@ Make sure the buttons are pushed down firmly against the Prototype Board, and th
 
 After the buttons and resistors are installed, the board should look like this:
 
-![](../resources/images/NPI00011b.jpg)
+![](../resourcimages/NPI00011b.jpg)
 _Note the leg positions of the switches_
 
-![](../resources/images/NPI00011c.jpg)
+![](../resourcimages/NPI00011c.jpg)
 _Note the joins along column T and between P and Q_
 
 Next, take the Header Strip, and break off a row of eight pins. Place this in Column I, rows 9-16, and then fit the LCD Screen into Column Y, rows 9-16. The header pins should go into the holes in the top of the LCD Screen. Solder these pieces down, leaving a small gap between the resistors and the LCD Screen so they don't touch.
 
-![](../resources/images/NPI00011d.jpg)
+![](../resourcimages/NPI00011d.jpg)
 
 Note that the top of the screen has a broad silver border. After this, you can trim the pins at the back of the LCD Screen so they aren't so long.
 
 The next step is to fit the Nano onto the board. This goes into columns A and G, from row eight to row 22, with the USB connector facing above the side of the board with five buttons. The Nano can be pushed down firmly onto the board and soldered into place.
 
-![](../resources/images/NPI00011f.jpg)
+![](../resourcimages/NPI00011f.jpg)
 
 The final component on the front side of the board is the Buzzer. For this, we remove the Buzzer unit from the module, so that we can make our final board as compact as possible. The can be done by applying heat from a soldering iron to each of the legs (you may need to go back and forth between the legs a few times) while slowly pushing the Buzzer off the board. Be careful that it doesn't fly off as the last of the solder gives way.
 
-![](../resources/images/NPI00011g.jpg)
+![](../resourcimages/NPI00011g.jpg)
 
 The Buzzer unit can now be installed on the board- the positive pin goes to hole I1, and the negative pin to L1. You will probably need to pull the sticker off the Buzzer to see the markings, and usually, only the positive pin is marked. From the front, our Arduino Game Machine should look complete:
 
-![](../resources/images/NPI00011h.jpg)
+![](../resourcimages/NPI00011h.jpg)
 
 The wiring on the back is what makes it all work, so this has to be right. The LCD Screen runs off 3.3V power and logic levels, which is why we have the resistors on the board- they form a voltage divider, which turns 5V signals into 3.3V signals. In the table below, some of the connections are made directly, and some are made via the voltage divider.
 
 While doing this, I've found it helpful to have this diagram of the underside of a Nano, with pins marked. It's how the Nano pins are laid out on the wiring side of the board:
 
-![](../resources/images/NPI00011i.jpg)
+![](../resourcimages/NPI00011i.jpg)
 
 ### Soldering the Connections
 
 We'll show how we did the wiring below. Firstly, make all the ground connections. We did this by running a wire from the Nano GND to the voltage divider T column, and then making all the other connections from there.
 
-![](../resources/images/NPI00011j.jpg)
+![](../resourcimages/NPI00011j.jpg)
 
 Note that in the red circles, the black wire goes to terminals on two switches, which simplifies our wiring a bit more. The next step is to make all the LCD Screen connections- here you can see how the voltage divider works. The wires from the Nano go to the resistors on column L, and come out from the resistors on column P/Q to their designated connections on the LCD Screen. Note for the LCD Screen there are five voltage divider connections and one red wire going straight to the 3.3V supply on the Nano.
 
-![](../resources/images/NPI00011k.jpg)
+![](../resourcimages/NPI00011k.jpg)
 
 Then we can do the wiring for the buttons, speaker and battery monitor. Make sure that you use the same terminals on the Push Buttons as shown- some of the terminals are wires straight through and the Nano will think the buttons are pushed down permanently if they are wired wrong.
 
-![](../resources/images/NPI00011l.jpg)
+![](../resourcimages/NPI00011l.jpg)
 
 This completes the wiring of the Game Machine
 
@@ -125,7 +125,7 @@ To compile your own sketches for the Arduino Game Machine, you can use the Gameb
 
 You'll need to have this library installed for the Tic-Tac-Toe game to work, and also copy the 'TICTACTOEforArduinoGameMachine' sketch folder from the 'TICTACTOEforArduinoGameMachine.zip' file to your Arduino sketch folder.
 
-![](../resources/images/NPI00011y.png)
+![](../resourcimages/NPI00011y.png)
 
 After this, it should simply be a case of selecting the Nano board and correct COM port and pressing `'upload'`. You should get a chime sound as well as the above left graphic when the sketch is correctly uploaded. If the sketch doesn't compile, check that the library is installed correctly. If you get missing picture or sound, check the wiring to that component.
 
@@ -148,7 +148,7 @@ There are more games available from https://github.com/Rodot/Gamebuino-Games-Com
 
 There is a way to upload HEX files directly by using the XLoader program. Download the zip file from http://russemotto.com/xloader/, and copy the XLoader file to somewhere you can access it, such as 'My Documents', then run the XLoader program.
 
-![](../resources/images/NPI00011m.jpg)
+![](../resourcimages/NPI00011m.jpg)
 
 For Device, choose Uno(ATMega 328)- even though we're using an Nano, they have the same microcontroller, and this works fine. Set the Baud Rate to 57600 (this is what the Nano usually uses for upload), then select your HEX file and COM Port and press Upload. The upload should cause the lights on the Nano to flicker like a normal Arduino Upload, and then the game should start within a few seconds.
 
