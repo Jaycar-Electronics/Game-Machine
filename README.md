@@ -1,80 +1,103 @@
-# Game Machine
-_Project 00011_
+# Duinotech Game Machine
 
-e found a little game project online http://gamebuino.com, and with it being open-source, realised we could make our own version of it using duinotech parts. Even better, there's already a heap of games that have been created at https://github.com/Rodot/Gamebuino-Games-Compilation, and because it's based on Arduino, you can create your own games as well. There's a complete set of libraries for making your own games at https://github.com/Rodot/Gamebuino, too. And just to make sure you've got something to get started with, we've built a Tic-Tac-Toe game for it too.
+<github> View the way the project is meant to be displayed at: https://jaycar.com.au/game-machine </github>
+
+We found a little game project online at <http://gamebuino.com>, and with it being open-source, realised we could make our own version of it using duinotech parts. Even better, there's already a heap of games that have been created at <https://github.com/Rodot/Gamebuino-Games-Compilation>, and because it's based on Arduino, you can create your own games as well. There's a complete set of libraries for making your own games at <https://github.com/Rodot/Gamebuino>, too. And just to make sure you've got something to get started with, we've built a Tic-Tac-Toe game for it too.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MAlvncscQzo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 There's a bit of soldering and fiddly wiring involved, but we were playing games on it within a few hours.
 
+## Table of contents
+
+- [Duinotech Game Machine](#Duinotech-Game-Machine)
+  - [Table of contents](#Table-of-contents)
+  - [Bill of Materials](#Bill-of-Materials)
+  - [Electrical Connections](#Electrical-Connections)
+  - [Software Libraries](#Software-Libraries)
+  - [Assembly](#Assembly)
+    - [Soldering the Connections](#Soldering-the-Connections)
+  - [Programming](#Programming)
+  - [Use](#Use)
+    - [More games](#More-games)
+  - [Future Improvements](#Future-Improvements)
 
 ## Bill of Materials
-| Qty | Code | Description |
-| --- | --- | ---|
-|1 | [XC4414](http://jaycar.com.au/p/XC4414) | Arduino Nano board
-|1 | [XC4616](http://jaycar.com.au/p/XC4616) | 84x48 LCD nokia display
-|1 | [XC4424](http://jaycar.com.au/p/XC4424) | buzzer module
-|1 | [SP0601](http://jaycar.com.au/p/SP0601) | micro button
-|1 | [HP9550](http://jaycar.com.au/p/HP9550) | prototyping board
-|1 | [RR0596](http://jaycar.com.au/p/RR0596) | 10k resistor pack
-|1 | [RR0588](http://jaycar.com.au/p/RR0588) | 4k7 resistor pack
-|1 | [WM4516](http://jaycar.com.au/p/WM4516) | rainbow ribbon cable
-|1 | [HM3211](http://jaycar.com.au/p/HM3211) | header strip
 
-## Connection Table
-|Nano | Game Machine | Colour used in diagrams |
-| --- | --- | --- |
-|5V|(connect direct to A6 for battery monitor)|Green
-|3.3V|Screen VCC direct connection|Red
-|GND|To all buttons, Screen GND, Buzzer negative|Black
-|D13|Screen SCLK via divider|Orange
-|D11|Screen DN(MOSI) via divider|Brown
-|D9|Button 0 (Up) direct connection|White
-|D8|Button 3 (Left) direct connection|Grey
-|D7|Button 1 (Right) direct connection|Purple
-|D6|Button 2 (Down) direct connection|Blue
-|D4|Button A direct connection|Yellow
-|D3|Buzzer positive direct connection|Orange
-|D2|Button B direct connection|Red
-|A6|(connect to 5V for battery monitor)|Green
-|A3|Button C direct connection|Orange
-|A2|Screen D/C via divider|Blue
-|A1|Screen SCE via divider|Green
-|A0|Screen RST via divider|Yellow
+| Qty | Code                                    | Description             |
+| --- | --------------------------------------- | ----------------------- |
+| 1   | [XC4414](http://jaycar.com.au/p/XC4414) | Arduino Nano board      |
+| 1   | [XC4616](http://jaycar.com.au/p/XC4616) | 84x48 LCD nokia display |
+| 1   | [XC4424](http://jaycar.com.au/p/XC4424) | buzzer module           |
+| 1   | [SP0601](http://jaycar.com.au/p/SP0601) | micro button            |
+| 1   | [HP9550](http://jaycar.com.au/p/HP9550) | prototyping board       |
+| 1   | [RR0596](http://jaycar.com.au/p/RR0596) | 10k resistor pack       |
+| 1   | [RR0588](http://jaycar.com.au/p/RR0588) | 4k7 resistor pack       |
+| 1   | [WM4516](http://jaycar.com.au/p/WM4516) | rainbow ribbon cable    |
+| 1   | [HM3211](http://jaycar.com.au/p/HM3211) | header strip            |
 
+## Electrical Connections
 
-### Connection Diagram
-![](images/game-machine.png)
+![schematic diagram](images/schematic.png)
 
+| Nano | Game Machine                                | Colour used in diagrams |
+| ---- | ------------------------------------------- | ----------------------- |
+| 3.3V | Screen VCC direct connection                | Red                     |
+| GND  | To all buttons, Screen GND, Buzzer negative | Black                   |
+| D13  | Screen SCLK via divider                     | Orange                  |
+| D11  | Screen DN(MOSI) via divider                 | Brown                   |
+| D9   | Button 0 (Up) direct connection             | White                   |
+| D8   | Button 3 (Left) direct connection           | Grey                    |
+| D7   | Button 1 (Right) direct connection          | Purple                  |
+| D6   | Button 2 (Down) direct connection           | Blue                    |
+| D4   | Button A direct connection                  | Yellow                  |
+| D3   | Buzzer positive direct connection           | Orange                  |
+| D2   | Button B direct connection                  | Red                     |
+| A6   | (connect to 5V for battery monitor)         | Green                   |
+| A3   | Button C direct connection                  | Orange                  |
+| A2   | Screen D/C via divider                      | Blue                    |
+| A1   | Screen SCE via divider                      | Green                   |
+| A0   | Screen RST via divider                      | Yellow                  |
 
 ## Software Libraries
-|Library | Author
-| --- | --- |
-|Gamebuino | Rodot |
 
+| Library   | Author |
+| --------- | ------ |
+| Gamebuino | Rodot  |
 
 ## Assembly
+
 You'll notice that the Prototype Board has numbers and letters marked on the columns and rows- we need to line up the components with the coordinates given so that we can fit them all in. We'll fit all the components first, then join them together with wires later.
 
-Insert the pushbuttons as follows:
+Insert the Pushbuttons as follows:
 
 Note that the buttons on the left should their legs running along the lettered columns (left to right)
-UP: rows 24 and 27, columns P and R
-DOWN: rows 24 and 27, columns V and X
-LEFT: rows 27 and 30, columns S and U
-RIGHT: rows 21 and 24, columns S and U
-C: rows 24 and 27, columns H and J
+
+| Button | Rows      | Columns |
+| ------ | --------- | ------- |
+| UP     | 24 and 27 | P and R |
+| DOWN   | 24 and 27 | V and X |
+| LEFT   | 27 and 30 | S and U |
+| RIGHT  | 21 and 24 | S and U |
+| C      | 24 and 27 | H and J |
 
 Buttons on the right should have their legs running along the numbered rows (up and down).
-A: rows 1 and 3, columns V and Y
-B: rows 1 and 3, columns R and U
+
+| Button | Rows    | Columns |
+| ------ | ------- | ------- |
+| A      | 1 and 3 | V and Y |
+| B      | 1 and 3 | R and U |
 
 Make sure the buttons are pushed down firmly against the Prototype Board, and then solder them down. Take six of the 4.7kOhm resistors and for each of rows 13-18, put a resistor from column L to column P, and solder them down and trim the legs. Then take six of the 10kOhm resistors and for the same rows, put a resistor from column Q to column T. Before cutting the legs off, join all of the resistor legs on column T together by bending one of the legs over and soldering. Also join each pair of resistors by soldering the legs in column P to the leg in the same row to the leg in column Q, and then trim the excess.
 
 After the buttons and resistors are installed, the board should look like this:
 
-![](images/NPI00011b.jpg)
+![board](images/NPI00011b.jpg)
+
 _Note the leg positions of the switches_
 
 ![](images/NPI00011c.jpg)
+
 _Note the joins along column T and between P and Q_
 
 Next, take the Header Strip, and break off a row of eight pins. Place this in Column I, rows 9-16, and then fit the LCD Screen into Column Y, rows 9-16. The header pins should go into the holes in the top of the LCD Screen. Solder these pieces down, leaving a small gap between the resistors and the LCD Screen so they don't touch.
@@ -119,13 +142,17 @@ This completes the wiring of the Game Machine
 
 ## Programming
 
-To compile your own sketches for the Arduino Game Machine, you can use the Gamebuino libraries. This can be installed by the Library Manager in Arduino by clicking Sketch>Include Library>Manage Libraries and searching for 'gamebuino'. If this doesn't work, the library can also be downloaded from here: https://github.com/Rodot/Gamebuino, and there is a copy in the project zip as well. The library includes a few examples, but not any games.
+To compile your own sketches for the Arduino Game Machine, you can use the Gamebuino libraries. This can be installed by the Library Manager in Arduino by clicking `Sketch > Include Library > Manage Libraries` and searching for _gamebuino_.
 
-You'll need to have this library installed for the Tic-Tac-Toe game to work, and also copy the 'TICTACTOEforArduinoGameMachine' sketch folder from the 'TICTACTOEforArduinoGameMachine.zip' file to your Arduino sketch folder.
+If this doesn't work, the library can also be downloaded from here: <https://github.com/Rodot/Gamebuino>. The library includes a few examples, but not any games.
+
+You'll need to have this library installed for the Tic-Tac-Toe game to work, and also copy the `TICTACTOEforArduinoGameMachine` sketch folder from the `TICTACTOEforArduinoGameMachine.zip` file to your Arduino sketch folder.
 
 ![](images/NPI00011y.png)
 
-After this, it should simply be a case of selecting the Nano board and correct COM port and pressing `upload`. You should get a chime sound as well as the above left graphic when the sketch is correctly uploaded. If the sketch doesn't compile, check that the library is installed correctly. If you get missing picture or sound, check the wiring to that component.
+After this, it should simply be a case of selecting the Nano board and correct COM port and pressing `upload`. You should get a chime sound as well as the above left graphic when the sketch is correctly uploaded.
+
+If the sketch doesn't compile, check that the library is installed correctly. If you get missing picture or sound, check the wiring to that component.
 
 ## Use
 
@@ -134,17 +161,19 @@ Pressing the `A` button (bottom right) should start the game, while pressing `B`
 After pressing `A`, follow the instructions on the screen, and use the directional buttons to place the `X` when it is the Player turn. Check that all the buttons work in the correct direction, and fix the wiring if necessary.
 
 ### More games
-We've found a few pre-made games at http://www.yodasvideoarcade.com/gamebuino.php. For example, to upload the Asterocks game, create an 'asterocks' folder in your Arduino folder, and copy the contents of the .zip file into this folder.
+
+We've found a few pre-made games at <http://www.yodasvideoarcade.com/gamebuino.php> For example, to upload the Asterocks game, create an 'asterocks' folder in your Arduino folder, and copy the contents of the .zip file into this folder.
 
 Then open the `asterocks.ino` sketch file, and choose 'Nano with ATMega 328', and the correct serial port, and click upload. If the sketch doesn't compile, then check that you have the Gamebuino library correctly installed.
 
 There are also more games on the github page:
-https://github.com/Rodot/Super-Crate-Buino
-https://github.com/Rodot/UFO-Race
 
-There are more games available from https://github.com/Rodot/Gamebuino-Games-Compilation, but they are only in HEX format, so can't be compiled by Arduino. The HEX format is what the sketch gets converted to before it is uploaded to the Arduino.
+- <https://github.com/Rodot/Super-Crate-Buino>
+- <https://github.com/Rodot/UFO-Race>
 
-There is a way to upload HEX files directly by using the XLoader program. Download the zip file from http://russemotto.com/xloader/, and copy the XLoader file to somewhere you can access it, such as 'My Documents', then run the XLoader program.
+There are more games available from <https://github.com/Rodot/Gamebuino-Games-Compilation> but they are only in HEX format, so can't be compiled by Arduino. The HEX format is what the sketch gets converted to before it is uploaded to the Arduino.
+
+There is a way to upload HEX files directly by using the XLoader program. Download the zip file from <http://russemotto.com/xloader/>, and copy the XLoader file to somewhere you can access it, such as 'My Documents', then run the XLoader program.
 
 ![](images/NPI00011m.jpg)
 

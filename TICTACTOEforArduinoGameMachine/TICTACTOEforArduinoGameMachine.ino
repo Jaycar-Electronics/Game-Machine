@@ -93,7 +93,7 @@ void loop(){
       gb.display.cursorY=25;
       gb.display.print("B for Computer");
       if(gb.buttons.pressed(BTN_A)){mv=0;}
-      if(gb.buttons.pressed(BTN_B)){mv=1;}      
+      if(gb.buttons.pressed(BTN_B)){mv=1;}
     }else{
       gb.display.drawLine(5,15,53,18);
       gb.display.drawLine(5,31,53,34);
@@ -124,7 +124,7 @@ void loop(){
           if(gb.buttons.pressed(BTN_UP)){cy--;if(cy<0){cy=0;}}
           if(gb.buttons.pressed(BTN_DOWN)){cy++;if(cy>2){cy=2;}}
           if(gb.buttons.pressed(BTN_LEFT)){cx--;if(cx<0){cx=0;}}
-          if(gb.buttons.pressed(BTN_RIGHT)){cx++;if(cx>2){cx=0;}}               
+          if(gb.buttons.pressed(BTN_RIGHT)){cx++;if(cx>2){cx=0;}}
           if(gb.buttons.pressed(BTN_A)){        //make a move!
             if(game[cx+cy*3]>'@'){              //invalid!
               gb.sound.playNote(50,20,0);
@@ -139,7 +139,7 @@ void loop(){
           computerAI();
           mv=0;                             //player's move
           if(threeinarow(game,'O')){mv=3;}  //player wins
-          gb.sound.playNote(800,3,0);          
+          gb.sound.playNote(800,3,0);
         }
       }else{                            //game over
         if(gb.buttons.pressed(BTN_A)){mv=-1;}        //back to menu if game over
@@ -152,13 +152,13 @@ void loop(){
         if(mv==4){
           gb.display.print(" TIE");
         }else{
-          gb.display.print("WINS");            
+          gb.display.print("WINS");
         }
         gb.display.cursorX=50;
         gb.display.cursorY=5;
-        gb.display.print("PRESS A!");        
+        gb.display.print("PRESS A!");
       }
-    }    
+    }
   }
 }
 
@@ -187,10 +187,10 @@ void computerAI(){
     for(int n=0;n<9;n++){     //scan board for wins
       if((cgame[n]=='O')&&(game[n]<'@')){ //is it a move that computer can make?
         if(threeinarow(cgame,'O')){   //possible computer win
-          cscore[n]++;          
+          cscore[n]++;
         }
         if(threeinarow(cgame,'X')){   //possible computer win
-          cscore[n]--;          
+          cscore[n]--;
         }
       }
     }
@@ -205,7 +205,7 @@ void computerAI(){
     }
     if(game[npos]>'@'){
       for(int n=0;n<9;n++){
-        if(game[n]<'@'){game[n]='O';break;}     //make any move and continue        
+        if(game[n]<'@'){game[n]='O';break;}     //make any move and continue
       }
     }else{
       game[npos]='O';       //make a move!
