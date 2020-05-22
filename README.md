@@ -29,7 +29,7 @@ There's a bit of soldering and fiddly wiring involved, but we were playing games
 | 1   | [XC4414](http://jaycar.com.au/p/XC4414) | Arduino Nano board      |
 | 1   | [XC4616](http://jaycar.com.au/p/XC4616) | 84x48 LCD nokia display |
 | 1   | [XC4424](http://jaycar.com.au/p/XC4424) | buzzer module           |
-| 1   | [SP0601](http://jaycar.com.au/p/SP0601) | micro button            |
+| 7   | [SP0601](http://jaycar.com.au/p/SP0601) | micro button            |
 | 1   | [HP9550](http://jaycar.com.au/p/HP9550) | prototyping board       |
 | 1   | [RR0596](http://jaycar.com.au/p/RR0596) | 10k resistor pack       |
 | 1   | [RR0588](http://jaycar.com.au/p/RR0588) | 4k7 resistor pack       |
